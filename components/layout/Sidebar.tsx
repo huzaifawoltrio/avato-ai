@@ -1,10 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import {
-  Home,
   Shield,
   Camera,
   Mail,
@@ -14,17 +13,20 @@ import {
   Search,
   Settings,
   User,
-} from 'lucide-react';
+  Phone,
+  Palette,
+} from "lucide-react";
 
 const menuItems = [
-  { icon: Home, label: 'Dashboard', href: '/' },
-  { icon: Shield, label: 'Content Shield™', href: '/content-shield' },
-  { icon: Camera, label: 'Avatar Generator', href: '/avatar-generator' },
-  { icon: Mail, label: 'Email Blaster', href: '/email-blaster' },
-  { icon: Mic, label: 'Voice Campaigns', href: '/voice-campaigns' },
-  { icon: Radio, label: 'Podcast Generator', href: '/podcast-generator' },
-  { icon: BarChart3, label: 'AvatoDash™', href: '/analytics' },
-  { icon: Search, label: 'SEO Automation', href: '/seo-automation' },
+  { icon: BarChart3, label: "AvatoDash™", href: "/analytics" },
+  { icon: Shield, label: "Content Shield™", href: "/content-shield" },
+  { icon: Camera, label: "Avatar Generator", href: "/avatar-generator" },
+  { icon: Palette, label: "Branding Assistant", href: "/branding-assistant" },
+  { icon: Mail, label: "Email Blaster", href: "/email-blaster" },
+  { icon: Mic, label: "Voice Campaigns", href: "/voice-campaigns" },
+  { icon: Phone, label: "Phone Campaigns", href: "/phone-campaigns" },
+  { icon: Radio, label: "Podcast Generator", href: "/podcast-generator" },
+  { icon: Search, label: "SEO Automation", href: "/seo-automation" },
 ];
 
 export function Sidebar() {
@@ -50,7 +52,6 @@ export function Sidebar() {
           {menuItems.map((item, index) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
-            
             return (
               <motion.div
                 key={item.href}
@@ -62,22 +63,22 @@ export function Sidebar() {
                   href={item.href}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
                     isActive
-                      ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30'
-                      : 'hover:bg-gray-800/50'
+                      ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30"
+                      : "hover:bg-gray-800/50"
                   }`}
                 >
                   <Icon
                     className={`w-5 h-5 transition-colors ${
                       isActive
-                        ? 'text-purple-400'
-                        : 'text-gray-400 group-hover:text-white'
+                        ? "text-purple-400"
+                        : "text-gray-400 group-hover:text-white"
                     }`}
                   />
                   <span
                     className={`transition-colors ${
                       isActive
-                        ? 'text-purple-400 font-medium'
-                        : 'text-gray-300 group-hover:text-white'
+                        ? "text-purple-400 font-medium"
+                        : "text-gray-300 group-hover:text-white"
                     }`}
                   >
                     {item.label}
@@ -96,14 +97,19 @@ export function Sidebar() {
             className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-800/50 transition-colors group"
           >
             <User className="w-5 h-5 text-gray-400 group-hover:text-white" />
-            <span className="text-gray-300 group-hover:text-white">Profile</span>
+            <span className="text-gray-300 group-hover:text-white">
+              Profile
+            </span>
           </Link>
+
           <Link
             href="/settings"
             className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-800/50 transition-colors group"
           >
             <Settings className="w-5 h-5 text-gray-400 group-hover:text-white" />
-            <span className="text-gray-300 group-hover:text-white">Settings</span>
+            <span className="text-gray-300 group-hover:text-white">
+              Settings
+            </span>
           </Link>
         </div>
       </div>
