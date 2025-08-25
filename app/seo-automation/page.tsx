@@ -1,35 +1,35 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/Card';
-import { GradientButton } from '@/components/ui/GradientButton';
-import { 
-  Search, 
-  Globe, 
-  FileText, 
-  Download, 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { GradientButton } from "@/components/ui/GradientButton";
+import {
+  Search,
+  Globe,
+  FileText,
+  Download,
   TrendingUp,
   CheckCircle,
   AlertTriangle,
   Clock,
   Target,
   Zap,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface SEOTask {
   id: string;
   url: string;
-  status: 'completed' | 'in-progress' | 'scheduled';
+  status: "completed" | "in-progress" | "scheduled";
   score: number;
   improvements: number;
   date: string;
-  type: 'full-audit' | 'keyword-optimization' | 'meta-update';
+  type: "full-audit" | "keyword-optimization" | "meta-update";
 }
 
 export default function SEOAutomation() {
-  const [sitemapUrl, setSitemapUrl] = useState('');
-  const [targetKeywords, setTargetKeywords] = useState('');
+  const [sitemapUrl, setSitemapUrl] = useState("");
+  const [targetKeywords, setTargetKeywords] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResults, setAnalysisResults] = useState<any>(null);
   const [autoOptimization, setAutoOptimization] = useState(true);
@@ -37,59 +37,74 @@ export default function SEOAutomation() {
 
   const [seoTasks, setSeoTasks] = useState<SEOTask[]>([
     {
-      id: '1',
-      url: 'https://example.com',
-      status: 'completed',
+      id: "1",
+      url: "https://example.com",
+      status: "completed",
       score: 89,
       improvements: 12,
-      date: '2024-01-15',
-      type: 'full-audit',
+      date: "2024-01-15",
+      type: "full-audit",
     },
     {
-      id: '2',
-      url: 'https://blog.example.com',
-      status: 'in-progress',
+      id: "2",
+      url: "https://blog.example.com",
+      status: "in-progress",
       score: 67,
       improvements: 8,
-      date: '2024-01-14',
-      type: 'keyword-optimization',
+      date: "2024-01-14",
+      type: "keyword-optimization",
     },
     {
-      id: '3',
-      url: 'https://shop.example.com',
-      status: 'completed',
+      id: "3",
+      url: "https://shop.example.com",
+      status: "completed",
       score: 94,
       improvements: 15,
-      date: '2024-01-13',
-      type: 'meta-update',
+      date: "2024-01-13",
+      type: "meta-update",
     },
   ]);
 
   const handleAnalyze = async () => {
     if (!sitemapUrl.trim()) return;
-    
+
     setIsAnalyzing(true);
-    
+
     setTimeout(() => {
       const newResults = {
         overallScore: Math.floor(Math.random() * 30) + 70,
         pages: Math.floor(Math.random() * 50) + 20,
         issues: Math.floor(Math.random() * 15) + 5,
         improvements: [
-          'Optimize meta descriptions for 12 pages',
-          'Add alt text to 8 images',
-          'Improve page loading speed',
-          'Fix broken internal links',
-          'Add structured data markup',
-          'Optimize heading hierarchy',
+          "Optimize meta descriptions for 12 pages",
+          "Add alt text to 8 images",
+          "Improve page loading speed",
+          "Fix broken internal links",
+          "Add structured data markup",
+          "Optimize heading hierarchy",
         ],
         keywords: [
-          { keyword: 'AI marketing', difficulty: 'Medium', volume: '2.4K', rank: 15 },
-          { keyword: 'marketing automation', difficulty: 'High', volume: '5.1K', rank: 23 },
-          { keyword: 'content optimization', difficulty: 'Low', volume: '890', rank: 8 },
+          {
+            keyword: "AI marketing",
+            difficulty: "Medium",
+            volume: "2.4K",
+            rank: 15,
+          },
+          {
+            keyword: "marketing automation",
+            difficulty: "High",
+            volume: "5.1K",
+            rank: 23,
+          },
+          {
+            keyword: "content optimization",
+            difficulty: "Low",
+            volume: "890",
+            rank: 8,
+          },
         ],
       };
-      
+
       setAnalysisResults(newResults);
       setIsAnalyzing(false);
 
@@ -97,28 +112,36 @@ export default function SEOAutomation() {
       const newTask: SEOTask = {
         id: Date.now().toString(),
         url: sitemapUrl,
-        status: 'completed',
+        status: "completed",
         score: newResults.overallScore,
         improvements: newResults.issues,
-        date: new Date().toISOString().split('T')[0],
-        type: 'full-audit',
+        date: new Date().toISOString().split("T")[0],
+        type: "full-audit",
       };
-      
-      setSeoTasks(prev => [newTask, ...prev]);
+
+      setSeoTasks((prev) => [newTask, ...prev]);
     }, 4000);
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'text-green-400 bg-green-500/20';
-      case 'in-progress': return 'text-yellow-400 bg-yellow-500/20';
-      case 'scheduled': return 'text-blue-400 bg-blue-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case "completed":
+        return "text-green-400 bg-green-500/20";
+      case "in-progress":
+        return "text-yellow-400 bg-yellow-500/20";
+      case "scheduled":
+        return "text-blue-400 bg-blue-500/20";
+      default:
+        return "text-gray-400 bg-gray-500/20";
     }
   };
 
   const getScoreColor = (score: number) => {
-    return score > 80 ? 'text-green-400' : score > 60 ? 'text-yellow-400' : 'text-red-400';
+    return score > 80
+      ? "text-green-400"
+      : score > 60
+      ? "text-yellow-400"
+      : "text-red-400";
   };
 
   return (
@@ -135,14 +158,17 @@ export default function SEOAutomation() {
           <h1 className="text-3xl font-bold text-white">SEO Automation</h1>
         </div>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Automated SEO optimization and content enhancement with AI-driven insights and recommendations.
+          Automated SEO optimization and content enhancement with AI-driven
+          insights and recommendations.
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Input Card */}
         <Card className="lg:col-span-1">
-          <h2 className="text-xl font-semibold text-white mb-4">SEO Analysis</h2>
+          <h2 className="text-xl font-semibold text-white mb-4">
+            SEO Analysis
+          </h2>
           <div className="space-y-6">
             {/* Sitemap URL */}
             <div>
@@ -182,7 +208,9 @@ export default function SEOAutomation() {
                 />
                 <div className="flex items-center space-x-2">
                   <Zap className="w-4 h-4 text-yellow-400" />
-                  <span className="text-gray-300">Auto-apply safe optimizations</span>
+                  <span className="text-gray-300">
+                    Auto-apply safe optimizations
+                  </span>
                 </div>
               </label>
 
@@ -195,29 +223,35 @@ export default function SEOAutomation() {
                 />
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4 text-blue-400" />
-                  <span className="text-gray-300">Enable weekly CRON updates</span>
+                  <span className="text-gray-300">
+                    Enable weekly CRON updates
+                  </span>
                 </div>
               </label>
             </div>
 
-            <GradientButton 
+            <GradientButton
               onClick={handleAnalyze}
               disabled={!sitemapUrl.trim() || isAnalyzing}
               className="w-full"
             >
-              {isAnalyzing ? 'Analyzing SEO...' : 'Run SEO Analysis'}
+              {isAnalyzing ? "Analyzing SEO..." : "Run SEO Analysis"}
             </GradientButton>
           </div>
         </Card>
 
         {/* Results Card */}
         <Card className="lg:col-span-2">
-          <h2 className="text-xl font-semibold text-white mb-4">Analysis Results</h2>
-          
+          <h2 className="text-xl font-semibold text-white mb-4">
+            Analysis Results
+          </h2>
+
           {isAnalyzing && (
             <div className="text-center py-8">
               <div className="w-16 h-16 border-4 border-yellow-500/30 border-t-yellow-500 rounded-full animate-spin mx-auto mb-4"></div>
-              <p className="text-gray-400">Analyzing your website's SEO performance...</p>
+              <p className="text-gray-400">
+                Analyzing your website's SEO performance...
+              </p>
             </div>
           )}
 
@@ -226,7 +260,11 @@ export default function SEOAutomation() {
               {/* Score Overview */}
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-gray-900/50 rounded-lg">
-                  <div className={`text-2xl font-bold ${getScoreColor(analysisResults.overallScore)}`}>
+                  <div
+                    className={`text-2xl font-bold ${getScoreColor(
+                      analysisResults.overallScore
+                    )}`}
+                  >
                     {analysisResults.overallScore}
                   </div>
                   <div className="text-sm text-gray-400">Overall Score</div>
@@ -247,47 +285,76 @@ export default function SEOAutomation() {
 
               {/* Improvements */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-3">Recommended Improvements</h3>
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  Recommended Improvements
+                </h3>
                 <div className="space-y-2">
-                  {analysisResults.improvements.map((improvement: string, index: number) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 bg-gray-900/30 rounded-lg">
-                      <Target className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{improvement}</span>
-                    </div>
-                  ))}
+                  {analysisResults.improvements.map(
+                    (improvement: string, index: number) => (
+                      <div
+                        key={index}
+                        className="flex items-start space-x-3 p-3 bg-gray-900/30 rounded-lg"
+                      >
+                        <Target className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-300 text-sm">
+                          {improvement}
+                        </span>
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
 
               {/* Keyword Analysis */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-3">Keyword Performance</h3>
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  Keyword Performance
+                </h3>
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-700">
-                        <th className="text-left py-2 text-gray-300">Keyword</th>
-                        <th className="text-left py-2 text-gray-300">Difficulty</th>
+                        <th className="text-left py-2 text-gray-300">
+                          Keyword
+                        </th>
+                        <th className="text-left py-2 text-gray-300">
+                          Difficulty
+                        </th>
                         <th className="text-left py-2 text-gray-300">Volume</th>
-                        <th className="text-left py-2 text-gray-300">Current Rank</th>
+                        <th className="text-left py-2 text-gray-300">
+                          Current Rank
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {analysisResults.keywords.map((keyword: any, index: number) => (
-                        <tr key={index} className="border-b border-gray-800">
-                          <td className="py-2 text-white">{keyword.keyword}</td>
-                          <td className="py-2">
-                            <span className={`px-2 py-1 rounded text-xs ${
-                              keyword.difficulty === 'Low' ? 'bg-green-500/20 text-green-400' :
-                              keyword.difficulty === 'Medium' ? 'bg-yellow-500/20 text-yellow-400' :
-                              'bg-red-500/20 text-red-400'
-                            }`}>
-                              {keyword.difficulty}
-                            </span>
-                          </td>
-                          <td className="py-2 text-gray-300">{keyword.volume}</td>
-                          <td className="py-2 text-purple-400">#{keyword.rank}</td>
-                        </tr>
-                      ))}
+                      {analysisResults.keywords.map(
+                        (keyword: any, index: number) => (
+                          <tr key={index} className="border-b border-gray-800">
+                            <td className="py-2 text-white">
+                              {keyword.keyword}
+                            </td>
+                            <td className="py-2">
+                              <span
+                                className={`px-2 py-1 rounded text-xs ${
+                                  keyword.difficulty === "Low"
+                                    ? "bg-green-500/20 text-green-400"
+                                    : keyword.difficulty === "Medium"
+                                    ? "bg-yellow-500/20 text-yellow-400"
+                                    : "bg-red-500/20 text-red-400"
+                                }`}
+                              >
+                                {keyword.difficulty}
+                              </span>
+                            </td>
+                            <td className="py-2 text-gray-300">
+                              {keyword.volume}
+                            </td>
+                            <td className="py-2 text-purple-400">
+                              #{keyword.rank}
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -308,7 +375,9 @@ export default function SEOAutomation() {
           {!analysisResults && !isAnalyzing && (
             <div className="text-center py-8">
               <Search className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <p className="text-gray-400">Enter a website URL above to start SEO analysis</p>
+              <p className="text-gray-400">
+                Enter a website URL above to start SEO analysis
+              </p>
             </div>
           )}
         </Card>
@@ -316,15 +385,21 @@ export default function SEOAutomation() {
 
       {/* History Card */}
       <Card>
-        <h2 className="text-xl font-semibold text-white mb-4">SEO Task History</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">
+          SEO Task History
+        </h2>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-700">
-                <th className="text-left py-3 px-4 text-gray-300">Website URL</th>
+                <th className="text-left py-3 px-4 text-gray-300">
+                  Website URL
+                </th>
                 <th className="text-left py-3 px-4 text-gray-300">Type</th>
                 <th className="text-left py-3 px-4 text-gray-300">SEO Score</th>
-                <th className="text-left py-3 px-4 text-gray-300">Improvements</th>
+                <th className="text-left py-3 px-4 text-gray-300">
+                  Improvements
+                </th>
                 <th className="text-left py-3 px-4 text-gray-300">Status</th>
                 <th className="text-left py-3 px-4 text-gray-300">Date</th>
                 <th className="text-left py-3 px-4 text-gray-300">Actions</th>
@@ -332,7 +407,10 @@ export default function SEOAutomation() {
             </thead>
             <tbody>
               {seoTasks.map((task) => (
-                <tr key={task.id} className="border-b border-gray-800 hover:bg-gray-800/30">
+                <tr
+                  key={task.id}
+                  className="border-b border-gray-800 hover:bg-gray-800/30"
+                >
                   <td className="py-3 px-4 text-white">
                     <div className="flex items-center space-x-2">
                       <Globe className="w-4 h-4 text-gray-400" />
@@ -340,17 +418,25 @@ export default function SEOAutomation() {
                     </div>
                   </td>
                   <td className="py-3 px-4 text-gray-300 capitalize">
-                    {task.type.replace('-', ' ')}
+                    {task.type.replace("-", " ")}
                   </td>
-                  <td className={`py-3 px-4 font-semibold ${getScoreColor(task.score)}`}>
+                  <td
+                    className={`py-3 px-4 font-semibold ${getScoreColor(
+                      task.score
+                    )}`}
+                  >
                     {task.score}/100
                   </td>
                   <td className="py-3 px-4 text-blue-400 font-semibold">
                     {task.improvements}
                   </td>
                   <td className="py-3 px-4">
-                    <span className={`px-2 py-1 rounded text-xs font-medium capitalize ${getStatusColor(task.status)}`}>
-                      {task.status.replace('-', ' ')}
+                    <span
+                      className={`px-2 py-1 rounded text-xs font-medium capitalize ${getStatusColor(
+                        task.status
+                      )}`}
+                    >
+                      {task.status.replace("-", " ")}
                     </span>
                   </td>
                   <td className="py-3 px-4 text-gray-400">{task.date}</td>

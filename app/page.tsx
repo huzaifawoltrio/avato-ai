@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/Card';
-import { GradientButton } from '@/components/ui/GradientButton';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { GradientButton } from "@/components/ui/GradientButton";
+import Link from "next/link";
 import {
   Shield,
   Camera,
@@ -15,64 +15,70 @@ import {
   Zap,
   TrendingUp,
   Users,
-} from 'lucide-react';
+} from "lucide-react";
 
 const tools = [
   {
     icon: Shield,
-    title: 'Smart Content Shield™',
-    description: 'Scan content for originality, plagiarism, and SEO optimization',
-    href: '/content-shield',
-    color: 'from-purple-500 to-pink-500',
+    title: "Smart Content Shield™",
+    description:
+      "Scan content for originality, plagiarism, and SEO optimization",
+    href: "/content-shield",
+    color: "from-purple-500 to-pink-500",
   },
   {
     icon: Camera,
-    title: 'Avatar Generator',
-    description: 'Convert photos and voice into professional avatar videos',
-    href: '/avatar-generator',
-    color: 'from-blue-500 to-cyan-500',
+    title: "Avatar Generator",
+    description: "Convert photos and voice into professional avatar videos",
+    href: "/avatar-generator",
+    color: "from-blue-500 to-cyan-500",
   },
   {
     icon: Mail,
-    title: 'Text + Email Blaster',
-    description: 'Send bulk personalized email campaigns with AI optimization',
-    href: '/email-blaster',
-    color: 'from-green-500 to-emerald-500',
+    title: "Text + Email Blaster",
+    description: "Send bulk personalized email campaigns with AI optimization",
+    href: "/email-blaster",
+    color: "from-green-500 to-emerald-500",
   },
   {
     icon: Mic,
-    title: 'Voice Campaigns',
-    description: 'Create and distribute AI-powered voice marketing messages',
-    href: '/voice-campaigns',
-    color: 'from-orange-500 to-red-500',
+    title: "Voice Campaigns",
+    description: "Create and distribute AI-powered voice marketing messages",
+    href: "/voice-campaigns",
+    color: "from-orange-500 to-red-500",
   },
   {
     icon: Radio,
-    title: 'Podcast Generator',
-    description: 'Transform scripts into professional podcast episodes',
-    href: '/podcast-generator',
-    color: 'from-indigo-500 to-purple-500',
+    title: "Podcast Generator",
+    description: "Transform scripts into professional podcast episodes",
+    href: "/podcast-generator",
+    color: "from-indigo-500 to-purple-500",
   },
   {
     icon: BarChart3,
-    title: 'AvatoDash™ Analytics',
-    description: 'Comprehensive analytics and AI-driven insights',
-    href: '/analytics',
-    color: 'from-teal-500 to-blue-500',
+    title: "AvatoDash™ Analytics",
+    description: "Comprehensive analytics and AI-driven insights",
+    href: "/analytics",
+    color: "from-teal-500 to-blue-500",
   },
   {
     icon: Search,
-    title: 'SEO Automation',
-    description: 'Automated SEO optimization and content enhancement',
-    href: '/seo-automation',
-    color: 'from-yellow-500 to-orange-500',
+    title: "SEO Automation",
+    description: "Automated SEO optimization and content enhancement",
+    href: "/seo-automation",
+    color: "from-yellow-500 to-orange-500",
   },
 ];
 
 const stats = [
-  { icon: Zap, label: 'AI Tools', value: '8+', color: 'text-purple-400' },
-  { icon: TrendingUp, label: 'Success Rate', value: '97%', color: 'text-green-400' },
-  { icon: Users, label: 'Active Users', value: '10K+', color: 'text-blue-400' },
+  { icon: Zap, label: "AI Tools", value: "8+", color: "text-purple-400" },
+  {
+    icon: TrendingUp,
+    label: "Success Rate",
+    value: "97%",
+    color: "text-green-400",
+  },
+  { icon: Users, label: "Active Users", value: "10K+", color: "text-blue-400" },
 ];
 
 export default function Home() {
@@ -88,8 +94,9 @@ export default function Home() {
           Your Always-On AI Marketing Assistant
         </h1>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-          Supercharge your marketing with cutting-edge AI tools. From content creation to analytics, 
-          AvatoAI helps you dominate your market with intelligent automation.
+          Supercharge your marketing with cutting-edge AI tools. From content
+          creation to analytics, AvatoAI helps you dominate your market with
+          intelligent automation.
         </p>
       </motion.div>
 
@@ -106,7 +113,9 @@ export default function Home() {
             >
               <Card className="text-center">
                 <Icon className={`w-8 h-8 mx-auto mb-2 ${stat.color}`} />
-                <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+                <div className="text-2xl font-bold text-white mb-1">
+                  {stat.value}
+                </div>
                 <div className="text-gray-400">{stat.label}</div>
               </Card>
             </motion.div>
@@ -127,7 +136,9 @@ export default function Home() {
             >
               <Card className="group cursor-pointer">
                 <Link href={tool.href}>
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${tool.color} flex items-center justify-center mb-4`}>
+                  <div
+                    className={`w-12 h-12 rounded-lg bg-gradient-to-r ${tool.color} flex items-center justify-center mb-4`}
+                  >
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
@@ -148,7 +159,8 @@ export default function Home() {
       <Card className="text-center space-y-4">
         <h2 className="text-2xl font-bold text-white">Ready to Get Started?</h2>
         <p className="text-gray-400">
-          Pick any tool above to begin your AI-powered marketing journey, or start with our most popular feature.
+          Pick any tool above to begin your AI-powered marketing journey, or
+          start with our most popular feature.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/content-shield">

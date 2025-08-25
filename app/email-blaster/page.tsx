@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/Card';
-import { GradientButton } from '@/components/ui/GradientButton';
-import { 
-  Mail, 
-  Upload, 
-  Send, 
-  Users, 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { GradientButton } from "@/components/ui/GradientButton";
+import {
+  Mail,
+  Upload,
+  Send,
+  Users,
   Eye,
   MousePointer,
   TrendingUp,
   FileText,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface Campaign {
   id: string;
@@ -22,55 +22,55 @@ interface Campaign {
   deliveryRate: number;
   openRate: number;
   clickRate: number;
-  status: 'draft' | 'sent' | 'scheduled' | 'sending';
+  status: "draft" | "sent" | "scheduled" | "sending";
   date: string;
 }
 
 export default function EmailBlaster() {
-  const [campaignName, setCampaignName] = useState('');
-  const [subject, setSubject] = useState('');
-  const [body, setBody] = useState('');
+  const [campaignName, setCampaignName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [body, setBody] = useState("");
   const [aiPersonalization, setAiPersonalization] = useState(true);
   const [isSending, setIsSending] = useState(false);
 
   const [campaigns, setCampaigns] = useState<Campaign[]>([
     {
-      id: '1',
-      name: 'Q4 Product Launch',
+      id: "1",
+      name: "Q4 Product Launch",
       recipients: 15420,
       deliveryRate: 98.5,
       openRate: 24.8,
       clickRate: 4.2,
-      status: 'sent',
-      date: '2024-01-15',
+      status: "sent",
+      date: "2024-01-15",
     },
     {
-      id: '2',
-      name: 'Holiday Newsletter',
+      id: "2",
+      name: "Holiday Newsletter",
       recipients: 8930,
       deliveryRate: 97.2,
       openRate: 31.5,
       clickRate: 6.8,
-      status: 'sent',
-      date: '2024-01-14',
+      status: "sent",
+      date: "2024-01-14",
     },
     {
-      id: '3',
-      name: 'Welcome Series - Part 1',
+      id: "3",
+      name: "Welcome Series - Part 1",
       recipients: 2340,
       deliveryRate: 99.1,
       openRate: 42.3,
       clickRate: 8.9,
-      status: 'sending',
-      date: '2024-01-13',
+      status: "sending",
+      date: "2024-01-13",
     },
   ]);
 
   const handleSendCampaign = async () => {
     if (!campaignName || !subject || !body) return;
-    
+
     setIsSending(true);
-    
+
     setTimeout(() => {
       const newCampaign: Campaign = {
         id: Date.now().toString(),
@@ -79,27 +79,32 @@ export default function EmailBlaster() {
         deliveryRate: Math.floor(Math.random() * 5) + 95,
         openRate: Math.floor(Math.random() * 20) + 20,
         clickRate: Math.floor(Math.random() * 10) + 3,
-        status: 'sent',
-        date: new Date().toISOString().split('T')[0],
+        status: "sent",
+        date: new Date().toISOString().split("T")[0],
       };
-      
-      setCampaigns(prev => [newCampaign, ...prev]);
+
+      setCampaigns((prev) => [newCampaign, ...prev]);
       setIsSending(false);
-      
+
       // Reset form
-      setCampaignName('');
-      setSubject('');
-      setBody('');
+      setCampaignName("");
+      setSubject("");
+      setBody("");
     }, 3000);
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'sent': return 'text-green-400 bg-green-500/20';
-      case 'sending': return 'text-yellow-400 bg-yellow-500/20';
-      case 'scheduled': return 'text-blue-400 bg-blue-500/20';
-      case 'draft': return 'text-gray-400 bg-gray-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case "sent":
+        return "text-green-400 bg-green-500/20";
+      case "sending":
+        return "text-yellow-400 bg-yellow-500/20";
+      case "scheduled":
+        return "text-blue-400 bg-blue-500/20";
+      case "draft":
+        return "text-gray-400 bg-gray-500/20";
+      default:
+        return "text-gray-400 bg-gray-500/20";
     }
   };
 
@@ -114,17 +119,22 @@ export default function EmailBlaster() {
           <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
             <Mail className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white">Text + Email Blaster</h1>
+          <h1 className="text-3xl font-bold text-white">
+            Text + Email Blaster
+          </h1>
         </div>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Create and send bulk personalized email campaigns with AI-powered optimization and advanced analytics.
+          Create and send bulk personalized email campaigns with AI-powered
+          optimization and advanced analytics.
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Campaign Form Card */}
         <Card className="lg:col-span-2">
-          <h2 className="text-xl font-semibold text-white mb-4">Create Campaign</h2>
+          <h2 className="text-xl font-semibold text-white mb-4">
+            Create Campaign
+          </h2>
           <div className="space-y-6">
             {/* Campaign Name */}
             <div>
@@ -153,7 +163,7 @@ export default function EmailBlaster() {
                 className="w-full p-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
               />
               <p className="text-xs text-gray-500 mt-1">
-                Use {'{{name}}'}, {'{{company}}'}, etc. for personalization
+                Use {"{{name}}"}, {"{{company}}"}, etc. for personalization
               </p>
             </div>
 
@@ -177,7 +187,9 @@ export default function EmailBlaster() {
               </label>
               <div className="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center hover:border-purple-500 transition-colors cursor-pointer">
                 <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-400">Upload CSV file with recipient data</p>
+                <p className="text-gray-400">
+                  Upload CSV file with recipient data
+                </p>
                 <p className="text-xs text-gray-500 mt-1">
                   Include columns: email, name, company, etc.
                 </p>
@@ -198,13 +210,13 @@ export default function EmailBlaster() {
               </label>
             </div>
 
-            <GradientButton 
+            <GradientButton
               onClick={handleSendCampaign}
               disabled={!campaignName || !subject || !body || isSending}
               className="w-full flex items-center justify-center space-x-2"
             >
               <Send className="w-4 h-4" />
-              <span>{isSending ? 'Sending Campaign...' : 'Send Campaign'}</span>
+              <span>{isSending ? "Sending Campaign..." : "Send Campaign"}</span>
             </GradientButton>
           </div>
         </Card>
@@ -216,14 +228,14 @@ export default function EmailBlaster() {
             <div className="p-4 bg-gray-900/50 rounded-lg border border-gray-700">
               <div className="text-sm text-gray-400 mb-2">Subject:</div>
               <div className="text-white font-medium">
-                {subject || 'Your subject line will appear here'}
+                {subject || "Your subject line will appear here"}
               </div>
             </div>
 
             <div className="p-4 bg-gray-900/50 rounded-lg border border-gray-700 h-40 overflow-y-auto">
               <div className="text-sm text-gray-400 mb-2">Body Preview:</div>
               <div className="text-gray-300 text-sm whitespace-pre-wrap">
-                {body || 'Your email content will be previewed here...'}
+                {body || "Your email content will be previewed here..."}
               </div>
             </div>
 
@@ -231,10 +243,13 @@ export default function EmailBlaster() {
               <div className="p-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg">
                 <div className="flex items-center space-x-2 mb-2">
                   <FileText className="w-4 h-4 text-purple-400" />
-                  <span className="text-purple-400 text-sm font-medium">AI Personalization Active</span>
+                  <span className="text-purple-400 text-sm font-medium">
+                    AI Personalization Active
+                  </span>
                 </div>
                 <p className="text-xs text-gray-400">
-                  Each email will be customized based on recipient data and engagement patterns.
+                  Each email will be customized based on recipient data and
+                  engagement patterns.
                 </p>
               </div>
             )}
@@ -244,16 +259,26 @@ export default function EmailBlaster() {
 
       {/* Campaign History */}
       <Card>
-        <h2 className="text-xl font-semibold text-white mb-4">Campaign History</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">
+          Campaign History
+        </h2>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-700">
-                <th className="text-left py-3 px-4 text-gray-300">Campaign Name</th>
-                <th className="text-left py-3 px-4 text-gray-300">Recipients</th>
-                <th className="text-left py-3 px-4 text-gray-300">Delivery Rate</th>
+                <th className="text-left py-3 px-4 text-gray-300">
+                  Campaign Name
+                </th>
+                <th className="text-left py-3 px-4 text-gray-300">
+                  Recipients
+                </th>
+                <th className="text-left py-3 px-4 text-gray-300">
+                  Delivery Rate
+                </th>
                 <th className="text-left py-3 px-4 text-gray-300">Open Rate</th>
-                <th className="text-left py-3 px-4 text-gray-300">Click Rate</th>
+                <th className="text-left py-3 px-4 text-gray-300">
+                  Click Rate
+                </th>
                 <th className="text-left py-3 px-4 text-gray-300">Status</th>
                 <th className="text-left py-3 px-4 text-gray-300">Date</th>
                 <th className="text-left py-3 px-4 text-gray-300">Actions</th>
@@ -261,8 +286,13 @@ export default function EmailBlaster() {
             </thead>
             <tbody>
               {campaigns.map((campaign) => (
-                <tr key={campaign.id} className="border-b border-gray-800 hover:bg-gray-800/30">
-                  <td className="py-3 px-4 text-white font-medium">{campaign.name}</td>
+                <tr
+                  key={campaign.id}
+                  className="border-b border-gray-800 hover:bg-gray-800/30"
+                >
+                  <td className="py-3 px-4 text-white font-medium">
+                    {campaign.name}
+                  </td>
                   <td className="py-3 px-4 text-gray-300">
                     <div className="flex items-center space-x-1">
                       <Users className="w-4 h-4 text-gray-400" />
@@ -285,7 +315,11 @@ export default function EmailBlaster() {
                     </div>
                   </td>
                   <td className="py-3 px-4">
-                    <span className={`px-2 py-1 rounded text-xs font-medium capitalize ${getStatusColor(campaign.status)}`}>
+                    <span
+                      className={`px-2 py-1 rounded text-xs font-medium capitalize ${getStatusColor(
+                        campaign.status
+                      )}`}
+                    >
                       {campaign.status}
                     </span>
                   </td>

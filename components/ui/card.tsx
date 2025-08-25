@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface CardProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface CardProps {
   hover?: boolean;
 }
 
-export function Card({ children, className = '', hover = true }: CardProps) {
+export function Card({ children, className = "", hover = true }: CardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/Card';
-import { GradientButton } from '@/components/ui/GradientButton';
-import { 
-  Radio, 
-  Upload, 
-  Play, 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { GradientButton } from "@/components/ui/GradientButton";
+import {
+  Radio,
+  Upload,
+  Play,
   Pause,
-  Download, 
+  Download,
   Music,
   Mic,
   FileText,
   Volume2,
   Clock,
   Headphones,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface PodcastEpisode {
   id: string;
@@ -24,14 +24,14 @@ interface PodcastEpisode {
   duration: string;
   downloads: number;
   date: string;
-  status: 'published' | 'draft' | 'processing';
+  status: "published" | "draft" | "processing";
   thumbnail: string;
 }
 
 export default function PodcastGenerator() {
-  const [script, setScript] = useState('');
-  const [episodeTitle, setEpisodeTitle] = useState('');
-  const [selectedVoice, setSelectedVoice] = useState('professional-male');
+  const [script, setScript] = useState("");
+  const [episodeTitle, setEpisodeTitle] = useState("");
+  const [selectedVoice, setSelectedVoice] = useState("professional-male");
   const [addIntroOutro, setAddIntroOutro] = useState(true);
   const [backgroundMusic, setBackgroundMusic] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -40,73 +40,93 @@ export default function PodcastGenerator() {
 
   const [episodes, setEpisodes] = useState<PodcastEpisode[]>([
     {
-      id: '1',
-      title: 'AI Marketing Trends 2024',
-      duration: '15:32',
+      id: "1",
+      title: "AI Marketing Trends 2024",
+      duration: "15:32",
       downloads: 1247,
-      date: '2024-01-15',
-      status: 'published',
-      thumbnail: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400',
+      date: "2024-01-15",
+      status: "published",
+      thumbnail:
+        "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400",
     },
     {
-      id: '2',
-      title: 'Content Creation with AI',
-      duration: '12:18',
+      id: "2",
+      title: "Content Creation with AI",
+      duration: "12:18",
       downloads: 892,
-      date: '2024-01-14',
-      status: 'published',
-      thumbnail: 'https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=400',
+      date: "2024-01-14",
+      status: "published",
+      thumbnail:
+        "https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=400",
     },
     {
-      id: '3',
-      title: 'Voice Technology Deep Dive',
-      duration: '18:45',
+      id: "3",
+      title: "Voice Technology Deep Dive",
+      duration: "18:45",
       downloads: 0,
-      date: '2024-01-13',
-      status: 'processing',
-      thumbnail: 'https://images.pexels.com/photos/7688367/pexels-photo-7688367.jpeg?auto=compress&cs=tinysrgb&w=400',
+      date: "2024-01-13",
+      status: "processing",
+      thumbnail:
+        "https://images.pexels.com/photos/7688367/pexels-photo-7688367.jpeg?auto=compress&cs=tinysrgb&w=400",
     },
   ]);
 
   const voiceOptions = [
-    { value: 'professional-male', label: 'Professional Male', accent: 'American' },
-    { value: 'professional-female', label: 'Professional Female', accent: 'American' },
-    { value: 'casual-male', label: 'Casual Male', accent: 'British' },
-    { value: 'casual-female', label: 'Casual Female', accent: 'Australian' },
-    { value: 'narrator-deep', label: 'Deep Narrator', accent: 'American' },
-    { value: 'narrator-warm', label: 'Warm Narrator', accent: 'Canadian' },
+    {
+      value: "professional-male",
+      label: "Professional Male",
+      accent: "American",
+    },
+    {
+      value: "professional-female",
+      label: "Professional Female",
+      accent: "American",
+    },
+    { value: "casual-male", label: "Casual Male", accent: "British" },
+    { value: "casual-female", label: "Casual Female", accent: "Australian" },
+    { value: "narrator-deep", label: "Deep Narrator", accent: "American" },
+    { value: "narrator-warm", label: "Warm Narrator", accent: "Canadian" },
   ];
 
   const handleGenerate = async () => {
     if (!script.trim() || !episodeTitle.trim()) return;
-    
+
     setIsGenerating(true);
-    
+
     setTimeout(() => {
-      setGeneratedAudio('generated-podcast.mp3');
+      setGeneratedAudio("generated-podcast.mp3");
       setIsGenerating(false);
-      
+
       // Add to episodes
       const newEpisode: PodcastEpisode = {
         id: Date.now().toString(),
         title: episodeTitle,
-        duration: `${Math.floor(Math.random() * 10) + 10}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
+        duration: `${Math.floor(Math.random() * 10) + 10}:${Math.floor(
+          Math.random() * 60
+        )
+          .toString()
+          .padStart(2, "0")}`,
         downloads: 0,
-        date: new Date().toISOString().split('T')[0],
-        status: 'draft',
-        thumbnail: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400',
+        date: new Date().toISOString().split("T")[0],
+        status: "draft",
+        thumbnail:
+          "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400",
       };
-      
-      setEpisodes(prev => [newEpisode, ...prev]);
+
+      setEpisodes((prev) => [newEpisode, ...prev]);
     }, 6000);
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'published': return 'text-green-400 bg-green-500/20';
-      case 'processing': return 'text-yellow-400 bg-yellow-500/20';
-      case 'draft': return 'text-gray-400 bg-gray-500/20';
-      default: return 'text-gray-400 bg-gray-500/20';
+      case "published":
+        return "text-green-400 bg-green-500/20";
+      case "processing":
+        return "text-yellow-400 bg-yellow-500/20";
+      case "draft":
+        return "text-gray-400 bg-gray-500/20";
+      default:
+        return "text-gray-400 bg-gray-500/20";
     }
   };
 
@@ -121,17 +141,22 @@ export default function PodcastGenerator() {
           <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
             <Radio className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white">AI Podcast Generator</h1>
+          <h1 className="text-3xl font-bold text-white">
+            AI Podcast Generator
+          </h1>
         </div>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Transform your scripts into professional podcast episodes with AI-powered voice synthesis and audio enhancement.
+          Transform your scripts into professional podcast episodes with
+          AI-powered voice synthesis and audio enhancement.
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Input Card */}
         <Card className="lg:col-span-1">
-          <h2 className="text-xl font-semibold text-white mb-4">Create Episode</h2>
+          <h2 className="text-xl font-semibold text-white mb-4">
+            Create Episode
+          </h2>
           <div className="space-y-6">
             {/* Episode Title */}
             <div>
@@ -210,25 +235,31 @@ export default function PodcastGenerator() {
               </label>
             </div>
 
-            <GradientButton 
+            <GradientButton
               onClick={handleGenerate}
               disabled={!script.trim() || !episodeTitle.trim() || isGenerating}
               className="w-full"
             >
-              {isGenerating ? 'Generating Podcast...' : 'Generate Episode'}
+              {isGenerating ? "Generating Podcast..." : "Generate Episode"}
             </GradientButton>
           </div>
         </Card>
 
         {/* Output Card */}
         <Card className="lg:col-span-2">
-          <h2 className="text-xl font-semibold text-white mb-4">Generated Episode</h2>
-          
+          <h2 className="text-xl font-semibold text-white mb-4">
+            Generated Episode
+          </h2>
+
           {isGenerating && (
             <div className="text-center py-12">
               <div className="w-20 h-20 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin mx-auto mb-6"></div>
-              <p className="text-gray-400 mb-2">Generating your podcast episode...</p>
-              <p className="text-sm text-gray-500">Processing voice synthesis and audio enhancement</p>
+              <p className="text-gray-400 mb-2">
+                Generating your podcast episode...
+              </p>
+              <p className="text-sm text-gray-500">
+                Processing voice synthesis and audio enhancement
+              </p>
               <div className="mt-4 bg-gray-800 rounded-full h-2 max-w-md mx-auto">
                 <div className="bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full animate-pulse w-2/3"></div>
               </div>
@@ -244,8 +275,16 @@ export default function PodcastGenerator() {
                     <Radio className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">{episodeTitle}</h3>
-                    <p className="text-gray-400">Generated with {voiceOptions.find(v => v.value === selectedVoice)?.label}</p>
+                    <h3 className="text-lg font-semibold text-white">
+                      {episodeTitle}
+                    </h3>
+                    <p className="text-gray-400">
+                      Generated with{" "}
+                      {
+                        voiceOptions.find((v) => v.value === selectedVoice)
+                          ?.label
+                      }
+                    </p>
                   </div>
                 </div>
 
@@ -284,7 +323,9 @@ export default function PodcastGenerator() {
                   <div className="text-sm text-gray-400">Quality</div>
                 </div>
                 <div className="p-3 bg-gray-900/50 rounded-lg">
-                  <div className="text-lg font-semibold text-white">15.2 MB</div>
+                  <div className="text-lg font-semibold text-white">
+                    15.2 MB
+                  </div>
                   <div className="text-sm text-gray-400">File Size</div>
                 </div>
               </div>
@@ -305,7 +346,9 @@ export default function PodcastGenerator() {
           {!generatedAudio && !isGenerating && (
             <div className="text-center py-12">
               <Radio className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <p className="text-gray-400">Enter your script above to generate a podcast episode</p>
+              <p className="text-gray-400">
+                Enter your script above to generate a podcast episode
+              </p>
             </div>
           )}
         </Card>
@@ -313,7 +356,9 @@ export default function PodcastGenerator() {
 
       {/* Episodes History */}
       <Card>
-        <h2 className="text-xl font-semibold text-white mb-4">Episode Library</h2>
+        <h2 className="text-xl font-semibold text-white mb-4">
+          Episode Library
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {episodes.map((episode) => (
             <div key={episode.id} className="group cursor-pointer">
@@ -327,7 +372,11 @@ export default function PodcastGenerator() {
                   <Play className="w-8 h-8 text-white" />
                 </div>
                 <div className="absolute top-2 right-2">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(episode.status)}`}>
+                  <span
+                    className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(
+                      episode.status
+                    )}`}
+                  >
                     {episode.status}
                   </span>
                 </div>
@@ -345,9 +394,7 @@ export default function PodcastGenerator() {
               <h3 className="text-white font-medium mb-1 group-hover:text-purple-400 transition-colors">
                 {episode.title}
               </h3>
-              <div className="text-sm text-gray-400">
-                {episode.date}
-              </div>
+              <div className="text-sm text-gray-400">{episode.date}</div>
             </div>
           ))}
         </div>
