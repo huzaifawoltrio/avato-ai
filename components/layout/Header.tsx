@@ -1,14 +1,24 @@
-'use client';
+"use client";
 
-import { Bell, Search, Moon, Sun } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { Bell, Search, Moon, Sun, User, LogOut } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Header() {
   const [isDark, setIsDark] = useState(true);
 
   return (
-    <header className="fixed top-0 right-0 left-64 h-16 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800 z-30">
+    <header className="fixed top-0 right-0 left-0 md:left-64 h-16 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800 z-30">
       <div className="flex items-center justify-between h-full px-6">
         <div className="flex items-center space-x-4 flex-1 max-w-md">
           <div className="relative flex-1">
@@ -44,9 +54,40 @@ export function Header() {
             <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
           </motion.button>
 
-          <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-semibold text-sm">U</span>
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="cursor-pointer"
+              >
+                <Avatar className="w-9 h-9">
+                  <AvatarImage src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                  <AvatarFallback>U</AvatarFallback>
+                </Avatar>
+              </motion.div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56" align="end">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/profile" className="cursor-pointer">
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="cursor-pointer text-red-400 focus:text-red-400 focus:bg-red-500/10"
+                asChild
+              >
+                <Link href="/login">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>

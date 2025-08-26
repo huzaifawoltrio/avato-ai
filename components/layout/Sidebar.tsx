@@ -19,6 +19,7 @@ import {
   Menu,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { SettingsModal } from "../ui/settingsModal"; // Import the new modal
 
 const menuItems = [
   { icon: BarChart3, label: "AvatoDash™", href: "/analytics" },
@@ -34,6 +35,7 @@ const menuItems = [
 export function Sidebar() {
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false); // State for the modal
 
   useEffect(() => {
     const handleResize = () => {
@@ -137,28 +139,48 @@ export function Sidebar() {
               <div className="space-y-2">
                 <Link
                   href="/profile"
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-800/50 transition-colors group"
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
+                    pathname === "/profile"
+                      ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30"
+                      : "hover:bg-gray-800/50"
+                  }`}
                 >
-                  <User className="w-5 h-5 text-gray-400 group-hover:text-white" />
-                  <span className="text-gray-300 group-hover:text-white">
+                  <User
+                    className={`w-5 h-5 transition-colors ${
+                      pathname === "/profile"
+                        ? "text-purple-400"
+                        : "text-gray-400 group-hover:text-white"
+                    }`}
+                  />
+                  <span
+                    className={`transition-colors ${
+                      pathname === "/profile"
+                        ? "text-purple-400 font-medium"
+                        : "text-gray-300 group-hover:text-white"
+                    }`}
+                  >
                     Profile
                   </span>
                 </Link>
 
-                <Link
-                  href="/settings"
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-800/50 transition-colors group"
+                <button
+                  onClick={() => setIsSettingsOpen(true)}
+                  className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-800/50 transition-colors group"
                 >
                   <Settings className="w-5 h-5 text-gray-400 group-hover:text-white" />
                   <span className="text-gray-300 group-hover:text-white">
                     Settings
                   </span>
-                </Link>
+                </button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+      />
     </>
   );
 }

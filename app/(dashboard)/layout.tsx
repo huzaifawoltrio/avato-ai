@@ -1,7 +1,7 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Sidebar } from "@/components/layout/Sidebar";
+import { Sidebar } from "../../components/layout/Sidebar";
 import { Header } from "@/components/layout/Header";
 import { ChatbotWidget } from "@/components/ui/chatbotWidget"; // 👈 ADD THIS IMPORT
 
