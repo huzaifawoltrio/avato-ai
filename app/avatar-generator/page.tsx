@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/ui/card";
 import { GradientButton } from "@/components/ui/GradientButton";
 import { Skeleton } from "@/components/ui/skeleton";
 import {

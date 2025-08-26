@@ -23,7 +23,7 @@ const menuItems = [
   { icon: Camera, label: "Avatar Generator", href: "/avatar-generator" },
   { icon: Palette, label: "Branding Assistant", href: "/branding-assistant" },
   { icon: Mail, label: "Email Blaster", href: "/email-blaster" },
-  { icon: Mic, label: "Voice Campaigns", href: "/voice-campaigns" },
+  // { icon: Mic, label: "Voice Campaigns", href: "/voice-campaigns" },
   { icon: Phone, label: "Phone Campaigns", href: "/phone-campaigns" },
   { icon: Radio, label: "Podcast Generator", href: "/podcast-generator" },
   { icon: Search, label: "SEO Automation", href: "/seo-automation" },

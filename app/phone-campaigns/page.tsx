@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/ui/card";
 import { GradientButton } from "@/components/ui/GradientButton";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
@@ -825,18 +825,19 @@ export default function PhoneCampaigns() {
             <div className="space-y-6">
               {/* Campaign Funnel */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-3">
+                <h3 className="text-lg font-semibold text-white mb-4">
                   Campaign Funnel (Last Completed)
                 </h3>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="h-48">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="h-72 flex items-center justify-center">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
                           data={campaignFunnelData}
                           cx="50%"
                           cy="50%"
-                          outerRadius={80}
+                          outerRadius={120}
+                          innerRadius={40}
                           dataKey="value"
                         >
                           {campaignFunnelData.map((entry, index) => (
@@ -855,37 +856,79 @@ export default function PhoneCampaigns() {
                     </ResponsiveContainer>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-3 flex flex-col justify-center">
                     {campaignFunnelData.map((item, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between p-2 bg-gray-900/30 rounded"
+                        className="flex items-center justify-between p-3 bg-gray-900/50 rounded-lg border border-gray-700/50 hover:border-gray-600/50 transition-colors"
                       >
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-3">
                           <div
-                            className="w-3 h-3 rounded-full"
+                            className="w-4 h-4 rounded-full shadow-lg"
                             style={{ backgroundColor: item.color }}
                           />
-                          <span className="text-gray-300 text-sm">
+                          <span className="text-gray-200 font-medium">
                             {item.name}
                           </span>
                         </div>
-                        <span className="text-white font-medium">
+                        <span className="text-white font-bold text-lg">
                           {item.value.toLocaleString()}
                         </span>
                       </div>
                     ))}
+
+                    {/* Conversion Rates */}
+                    <div className="mt-4 pt-4 border-t border-gray-700">
+                      <div className="grid grid-cols-1 gap-2 text-sm">
+                        <div className="flex justify-between text-gray-400">
+                          <span>Answer Rate:</span>
+                          <span className="text-green-400 font-semibold">
+                            {Math.round(
+                              (campaignFunnelData[1].value /
+                                campaignFunnelData[0].value) *
+                                100
+                            )}
+                            %
+                          </span>
+                        </div>
+                        <div className="flex justify-between text-gray-400">
+                          <span>Engagement Rate:</span>
+                          <span className="text-blue-400 font-semibold">
+                            {Math.round(
+                              (campaignFunnelData[2].value /
+                                campaignFunnelData[1].value) *
+                                100
+                            )}
+                            %
+                          </span>
+                        </div>
+                        <div className="flex justify-between text-gray-400">
+                          <span>Callback Rate:</span>
+                          <span className="text-orange-400 font-semibold">
+                            {Math.round(
+                              (campaignFunnelData[3].value /
+                                campaignFunnelData[2].value) *
+                                100
+                            )}
+                            %
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Placeholder for no active campaign */}
-              <div className="text-center py-8">
-                <Phone className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                <p className="text-gray-400 mb-2">No active campaign running</p>
-                <p className="text-sm text-gray-500">
-                  Configure your campaign settings and click "Start Campaign" to
-                  begin
+              <div className="text-center py-12 border-t border-gray-800 mt-8">
+                <Phone className="w-20 h-20 text-gray-600 mx-auto mb-4" />
+                <p className="text-gray-400 mb-2 text-lg">
+                  No active campaign running
+                </p>
+                <p className="text-sm text-gray-500 max-w-md mx-auto">
+                  Configure your campaign settings in the left panel and click
+                  "Start Campaign" to begin making automated calls with
+                  real-time monitoring
                 </p>
               </div>
             </div>
