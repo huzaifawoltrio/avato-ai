@@ -42,9 +42,9 @@ const tools = [
   },
   {
     icon: Mic,
-    title: "Voice Campaigns",
+    title: "Phone Campaigns",
     description: "Create and distribute AI-powered voice marketing messages",
-    href: "/voice-campaigns",
+    href: "/phone-campaigns",
     color: "from-orange-500 to-red-500",
   },
   {
