@@ -95,10 +95,11 @@ export default function Analytics() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center justify-between"
+        // CHANGE: Made the header stack on mobile and added a gap for better spacing.
+        className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left"
       >
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-teal-500 to-blue-500 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-teal-500 to-blue-500 flex items-center justify-center flex-shrink-0">
             <BarChart3 className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -111,12 +112,13 @@ export default function Analytics() {
           </div>
         </div>
 
-        <div className="flex space-x-2">
+        {/* CHANGE: Added flex-wrap and justify-center to handle button wrapping on small screens */}
+        <div className="flex flex-wrap justify-center gap-2">
           {["1w", "1m", "3m", "6m", "1y"].map((range) => (
             <button
               key={range}
               onClick={() => setTimeRange(range)}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-3 py-2 text-sm rounded-lg font-medium transition-colors ${
                 timeRange === range
                   ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white"
                   : "bg-gray-800 text-gray-400 hover:text-white"
@@ -168,8 +170,8 @@ export default function Analytics() {
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={campaignData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="name" stroke="#9CA3AF" />
-                <YAxis stroke="#9CA3AF" />
+                <XAxis dataKey="name" stroke="#9CA3AF" fontSize={12} />
+                <YAxis stroke="#9CA3AF" fontSize={12} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: "#1F2937",
@@ -183,21 +185,21 @@ export default function Analytics() {
                   dataKey="emails"
                   stroke="#8B5CF6"
                   strokeWidth={3}
-                  dot={{ fill: "#8B5CF6", strokeWidth: 2, r: 6 }}
+                  dot={{ fill: "#8B5CF6", strokeWidth: 2, r: 5 }}
                 />
                 <Line
                   type="monotone"
                   dataKey="voice"
                   stroke="#3B82F6"
                   strokeWidth={3}
-                  dot={{ fill: "#3B82F6", strokeWidth: 2, r: 6 }}
+                  dot={{ fill: "#3B82F6", strokeWidth: 2, r: 5 }}
                 />
                 <Line
                   type="monotone"
                   dataKey="podcasts"
                   stroke="#10B981"
                   strokeWidth={3}
-                  dot={{ fill: "#10B981", strokeWidth: 2, r: 6 }}
+                  dot={{ fill: "#10B981", strokeWidth: 2, r: 5 }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -217,7 +219,9 @@ export default function Analytics() {
                   cx="50%"
                   cy="50%"
                   outerRadius={100}
+                  innerRadius={60}
                   dataKey="value"
+                  paddingAngle={5}
                 >
                   {engagementData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />

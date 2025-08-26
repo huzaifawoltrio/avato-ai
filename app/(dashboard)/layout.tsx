@@ -1,9 +1,9 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Sidebar } from "../../components/layout/Sidebar";
+import { Sidebar } from "@/components/layout/Sidebar";
 import { Header } from "@/components/layout/Header";
-import { ChatbotWidget } from "@/components/ui/chatbotWidget"; // 👈 ADD THIS IMPORT
+import { ChatbotWidget } from "@/components/ui/chatbotWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +24,8 @@ export default function RootLayout({
       >
         <div className="flex">
           <Sidebar />
-          <div className="flex-1 ml-64">
+          {/* CHANGE: Added `md:ml-64` to make the margin conditional on screen size. */}
+          <div className="flex-1 md:ml-64">
             <Header />
             <main className="p-6 pt-20">{children}</main>
             <ChatbotWidget />

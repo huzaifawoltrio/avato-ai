@@ -119,7 +119,8 @@ export default function EmailBlaster() {
           <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
             <Mail className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white">
+          {/* CHANGE: Adjusted font size for smaller screens. */}
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">
             Text + Email Blaster
           </h1>
         </div>

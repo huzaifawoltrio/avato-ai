@@ -90,6 +90,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-3 sm:space-y-4 py-6 sm:py-8"
       >
+        {/* CHANGE: Adjusted base font size for better wrapping on small screens */}
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent leading-tight">
           Your Always-On AI Marketing Assistant
         </h1>

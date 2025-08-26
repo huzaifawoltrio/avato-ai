@@ -20,7 +20,8 @@ export function Header() {
   return (
     <header className="fixed top-0 right-0 left-0 md:left-64 h-16 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800 z-30">
       <div className="flex items-center justify-between h-full px-6">
-        <div className="flex items-center space-x-4 flex-1 max-w-md">
+        {/* CHANGE: Added min-w-0 to allow the search input to shrink properly on very small screens. */}
+        <div className="flex items-center space-x-4 flex-1 max-w-md min-w-0">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
@@ -31,7 +32,8 @@ export function Header() {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
+        {/* CHANGE: Adjusted spacing for smaller screens. */}
+        <div className="flex items-center space-x-2 sm:space-x-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
