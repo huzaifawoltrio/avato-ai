@@ -24,8 +24,8 @@ export default function RootLayout({
       >
         <div className="flex">
           <Sidebar />
-          {/* CHANGE: Added `md:ml-64` to make the margin conditional on screen size. */}
-          <div className="flex-1 md:ml-64">
+          {/* CHANGE: Added responsive margin for collapsed sidebar */}
+          <div className="flex-1 md:ml-64 peer-[.w-20]:md:ml-20 transition-all duration-300 ease-in-out">
             <Header />
             <main className="p-6 pt-20">{children}</main>
             <ChatbotWidget />
