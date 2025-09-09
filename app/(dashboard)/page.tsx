@@ -5,187 +5,429 @@ import { Card } from "@/components/ui/card";
 import { GradientButton } from "@/components/ui/GradientButton";
 import Link from "next/link";
 import {
-  Shield,
-  Camera,
-  Mail,
-  Mic,
-  Radio,
-  BarChart3,
-  Search,
-  Zap,
-  TrendingUp,
   Users,
+  BarChart3,
+  HardDrive,
+  Shield,
+  Palette,
+  Video,
+  FileCheck,
+  Star,
+  MapPin,
+  Camera,
+  TrendingUp,
+  Eye,
+  Target,
+  DollarSign,
+  UserPlus,
+  MousePointerClick,
+  Award,
+  Sparkles,
 } from "lucide-react";
 
 const tools = [
   {
-    icon: Shield,
-    title: "Smart Content Shield™",
+    icon: Users,
+    title: "CRM",
+    subtitle: "Contacts & Campaign Tracking",
     description:
-      "Scan content for originality, plagiarism, and SEO optimization",
-    href: "/content-shield",
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    icon: Camera,
-    title: "Avatar Generator",
-    description: "Convert photos and voice into professional avatar videos",
-    href: "/avatar-generator",
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: Mail,
-    title: "Text + Email Blaster",
-    description: "Send bulk personalized email campaigns with AI optimization",
-    href: "/email-blaster",
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    icon: Mic,
-    title: "Phone Campaigns",
-    description: "Create and distribute AI-powered voice marketing messages",
-    href: "/phone-campaigns",
-    color: "from-orange-500 to-red-500",
-  },
-  {
-    icon: Radio,
-    title: "Podcast Generator",
-    description: "Transform scripts into professional podcast episodes",
-    href: "/podcast-generator",
-    color: "from-indigo-500 to-purple-500",
+      "Manage contacts, track campaigns, and nurture leads through your entire sales funnel",
+    href: "/crm",
+    color: "from-blue-500 via-blue-600 to-indigo-600",
+    stats: [
+      { label: "Leads", value: "1.2K" },
+      { label: "Campaigns", value: "32" },
+      { label: "Growth", value: "87%" },
+    ],
+    progress: 70,
   },
   {
     icon: BarChart3,
-    title: "AvatoDash™ Analytics",
-    description: "Comprehensive analytics and AI-driven insights",
+    title: "Dashboard & Analytics",
+    subtitle: "Performance Intelligence",
+    description:
+      "Real-time insights, ROI tracking, and comprehensive campaign performance metrics",
     href: "/analytics",
-    color: "from-teal-500 to-blue-500",
+    color: "from-purple-500 via-purple-600 to-pink-600",
+    stats: [
+      { label: "Reports", value: "56" },
+      { label: "ROI", value: "312%" },
+      { label: "KPI Hit", value: "93%" },
+    ],
+    progress: 80,
   },
   {
-    icon: Search,
-    title: "SEO Automation",
-    description: "Automated SEO optimization and content enhancement",
-    href: "/seo-automation",
-    color: "from-yellow-500 to-orange-500",
+    icon: HardDrive,
+    title: "Media Vault",
+    subtitle: "Secure Storage",
+    description:
+      "Centralized secure storage for all your marketing assets, media, and brand materials",
+    href: "/media-vault",
+    color: "from-gray-500 via-gray-600 to-slate-600",
+    stats: [
+      { label: "Used", value: "8GB" },
+      { label: "Total", value: "20GB" },
+      { label: "Files", value: "1.8K" },
+    ],
+    progress: 40,
+  },
+  {
+    icon: Shield,
+    title: "Smart Content Shield",
+    subtitle: "SEO, Plagiarism, Readability",
+    description:
+      "AI-powered content analysis for SEO optimization, originality checks, and readability scoring",
+    href: "/content-shield",
+    color: "from-emerald-500 via-green-600 to-teal-600",
+    stats: [
+      { label: "Scans", value: "230" },
+      { label: "Unique", value: "98%" },
+      { label: "SEO", value: "92%" },
+    ],
+    progress: 65,
+  },
+  {
+    icon: Palette,
+    title: "Branding Assistant",
+    subtitle: "Logos, Visuals, Messaging",
+    description:
+      "Create consistent brand identity with AI-generated logos, visuals, and messaging frameworks",
+    href: "/branding-assistant",
+    color: "from-rose-500 via-pink-600 to-purple-600",
+    stats: [
+      { label: "Logos", value: "45" },
+      { label: "Themes", value: "12" },
+      { label: "Assets", value: "380" },
+    ],
+    progress: 55,
+  },
+  {
+    icon: Video,
+    title: "AI Video & Avatar Studio",
+    subtitle: "Professional Content Creation",
+    description:
+      "Generate professional videos, AI avatars, and multimedia content for all your campaigns",
+    href: "/video-studio",
+    color: "from-orange-500 via-red-600 to-pink-600",
+    stats: [
+      { label: "Videos", value: "64" },
+      { label: "Avatars", value: "12" },
+      { label: "Exports", value: "302" },
+    ],
+    progress: 75,
+  },
+  {
+    icon: FileCheck,
+    title: "Marketing-Compliance Copilot",
+    subtitle: "Legal & Regulatory Guidance",
+    description:
+      "Ensure your campaigns meet legal requirements and industry compliance standards",
+    href: "/compliance-copilot",
+    color: "from-amber-500 via-yellow-600 to-orange-600",
+    stats: [
+      { label: "Checks", value: "412" },
+      { label: "Issues", value: "5" },
+      { label: "Compliance", value: "99%" },
+    ],
+    progress: 95,
+  },
+  {
+    icon: Star,
+    title: "Review & Reputation Genie",
+    subtitle: "Online Reputation Management",
+    description:
+      "Monitor, manage, and improve your online reputation across all review platforms",
+    href: "/reputation-genie",
+    color: "from-cyan-500 via-teal-600 to-blue-600",
+    stats: [
+      { label: "Reviews", value: "3.4K" },
+      { label: "Avg", value: "4.7★" },
+      { label: "Growth", value: "68%" },
+    ],
+    progress: 60,
+  },
+  {
+    icon: MapPin,
+    title: "Local Lead Radar",
+    subtitle: "Geographic Targeting",
+    description:
+      "Identify and target local prospects with precision geographic and demographic filtering",
+    href: "/local-lead-radar",
+    color: "from-violet-500 via-indigo-600 to-blue-600",
+    stats: [
+      { label: "Regions", value: "120" },
+      { label: "Leads", value: "15K" },
+      { label: "Conversions", value: "72%" },
+    ],
+    progress: 85,
+  },
+  {
+    icon: Camera,
+    title: "UGC Rights & Consent Manager",
+    subtitle: "Content Rights Management",
+    description:
+      "Manage user-generated content rights, permissions, and consent documentation",
+    href: "/ugc-manager",
+    color: "from-lime-500 via-green-600 to-emerald-600",
+    stats: [
+      { label: "UGC", value: "860" },
+      { label: "Approved", value: "742" },
+      { label: "Pending", value: "118" },
+    ],
+    progress: 78,
   },
 ];
 
-const stats = [
-  { icon: Zap, label: "AI Tools", value: "8+", color: "text-purple-400" },
+const roiCards = [
   {
-    icon: TrendingUp,
-    label: "Success Rate",
-    value: "97%",
-    color: "text-green-400",
+    icon: UserPlus,
+    title: "Lead Generation",
+    metric: "+147%",
+    description: "Increase in qualified leads",
+    color: "from-emerald-400 to-green-500",
+    bgColor: "from-emerald-500/20 to-green-500/20",
+    illustration: "https://illustrations.popsy.co/emerald/business-plan.svg", // Replace with your downloaded SVG
+    period: "Last 90 days",
   },
-  { icon: Users, label: "Active Users", value: "10K+", color: "text-blue-400" },
+  {
+    icon: Eye,
+    title: "Web Traffic",
+    metric: "+234%",
+    description: "Boost in organic traffic",
+    color: "from-blue-400 to-cyan-500",
+    bgColor: "from-blue-500/20 to-cyan-500/20",
+    illustration: "https://illustrations.popsy.co/blue/website-analytics.svg", // Replace with your downloaded SVG
+    period: "Last 60 days",
+  },
+  {
+    icon: Target,
+    title: "Lead Quality Score",
+    metric: "+89%",
+    description: "Higher conversion potential",
+    color: "from-purple-400 to-pink-500",
+    bgColor: "from-purple-500/20 to-pink-500/20",
+    illustration: "https://illustrations.popsy.co/purple/target.svg", // Replace with your downloaded SVG
+    period: "This quarter",
+  },
+  // {
+  //   icon: DollarSign,
+  //   title: "Revenue Growth",
+  //   metric: "+312%",
+  //   description: "Increase in monthly revenue",
+  //   color: "from-orange-400 to-red-500",
+  //   bgColor: "from-orange-500/20 to-red-500/20",
+  //   illustration: "https://illustrations.popsy.co/orange/investment.svg", // Replace with your downloaded SVG
+  //   period: "Last 120 days",
+  // },
+  // {
+  //   icon: MousePointerClick,
+  //   title: "Click-Through Rate",
+  //   metric: "+156%",
+  //   description: "Better campaign engagement",
+  //   color: "from-indigo-400 to-purple-500",
+  //   bgColor: "from-indigo-500/20 to-purple-500/20",
+  //   illustration: "https://illustrations.popsy.co/indigo/click.svg", // Replace with your downloaded SVG
+  //   period: "Campaign average",
+  // },
+  // {
+  //   icon: Award,
+  //   title: "Customer Satisfaction",
+  //   metric: "+78%",
+  //   description: "Higher customer ratings",
+  //   color: "from-yellow-400 to-orange-500",
+  //   bgColor: "from-yellow-500/20 to-orange-500/20",
+  //   illustration: "https://illustrations.popsy.co/yellow/customer-service.svg", // Replace with your downloaded SVG
+  //   period: "YTD improvement",
+  // },
 ];
 
 export default function Home() {
   return (
-    <div className="space-y-6 sm:space-y-8 px-4 sm:px-6 lg:px-0">
-      {/* Hero Section */}
+    <div className="relative space-y-12 px-8 py-10 min-h-screen">
+      {/* Header Section */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-3 sm:space-y-4 py-6 sm:py-8"
+        className="relative z-10 text-center space-y-6"
       >
-        {/* CHANGE: Adjusted base font size for better wrapping on small screens */}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent leading-tight">
-          Your Always-On AI Marketing Assistant
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Mission Control
+          </span>
         </h1>
-        <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto px-2 sm:px-0">
-          Supercharge your marketing with cutting-edge AI tools. From content
-          creation to analytics, AvatoAI helps you dominate your market with
-          intelligent automation.
+        <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+          Your AI-powered marketing command center. Launch any tool to
+          supercharge your campaigns.
         </p>
       </motion.div>
 
-      {/* Stats Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-        {stats.map((stat, index) => {
-          const Icon = stat.icon;
-          return (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className="text-center py-4 sm:py-6">
-                <Icon
-                  className={`w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2 ${stat.color}`}
-                />
-                <div className="text-xl sm:text-2xl font-bold text-white mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm sm:text-base text-gray-400">
-                  {stat.label}
-                </div>
-              </Card>
-            </motion.div>
-          );
-        })}
-      </div>
+      {/* ROI Performance Cards */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="relative z-10 mb-16"
+      >
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
+            <Sparkles className="w-8 h-8 text-yellow-400" />
+            Performance Impact
+            <Sparkles className="w-8 h-8 text-yellow-400" />
+          </h2>
+          <p className="text-gray-400">
+            Real results from our AI-powered tools
+          </p>
+        </div>
 
-      {/* Tools Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-        {tools.map((tool, index) => {
-          const Icon = tool.icon;
-          return (
-            <motion.div
-              key={tool.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className="group cursor-pointer h-full">
-                <Link href={tool.href} className="block h-full">
-                  <div className="flex flex-col h-full">
-                    <div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r ${tool.color} flex items-center justify-center mb-3 sm:mb-4 flex-shrink-0`}
-                    >
-                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {roiCards.map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="group"
+              >
+                <Card
+                  className={`relative p-6 bg-gradient-to-br ${card.bgColor} border-white/20 backdrop-blur-sm hover:border-white/40 transition-all duration-300 overflow-hidden`}
+                >
+                  {/* Background Illustration */}
+                  <div className="absolute top-0 right-0 w-32 h-32 opacity-10 overflow-hidden">
+                    <img
+                      src={card.illustration}
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+
+                  {/* Icon */}
+                  <div
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-r ${card.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg font-semibold text-white mb-1">
+                      {card.title}
+                    </h3>
+
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <span
+                        className={`text-3xl font-bold bg-gradient-to-r ${card.color} bg-clip-text text-transparent`}
+                      >
+                        {card.metric}
+                      </span>
+                      <TrendingUp className="w-5 h-5 text-green-400" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors">
+
+                    <p className="text-gray-300 text-sm mb-3">
+                      {card.description}
+                    </p>
+
+                    <div className="flex items-center gap-2">
+                      <div
+                        className={`w-2 h-2 rounded-full bg-gradient-to-r ${card.color}`}
+                      ></div>
+                      <span className="text-xs text-gray-400">
+                        {card.period}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Hover Glow Effect */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-r ${card.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-lg`}
+                  ></div>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {/* Mission Control Grid */}
+      <div className="relative z-10 max-w-full mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white mb-4">Launch Control</h2>
+          <p className="text-xl text-gray-400">
+            Choose your AI-powered marketing weapon
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {tools.map((tool, index) => {
+            const Icon = tool.icon;
+            return (
+              <motion.div
+                key={tool.title}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="group"
+              >
+                <Link href={tool.href}>
+                  <Card className="relative h-96 p-8 bg-gradient-to-br from-white/5 to-white/10 border-white/20 backdrop-blur-sm hover:from-white/10 hover:to-white/20 transition-all duration-500 ease-out overflow-visible group">
+                    {/* Icon */}
+                    <div
+                      className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${tool.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ease-out shadow-xl group-hover:shadow-2xl`}
+                    >
+                      <Icon className="w-10 h-10 text-white transition-all duration-500 ease-out group-hover:scale-110" />
+                    </div>
+
+                    {/* Title & Subtitle */}
+                    <h3 className="text-2xl font-bold text-white mb-1">
                       {tool.title}
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-400 mb-4 flex-grow leading-relaxed">
-                      {tool.description}
+                    <p className="text-sm font-medium text-gray-400 mb-4">
+                      {tool.subtitle}
                     </p>
-                    <GradientButton className="w-full mt-auto text-sm sm:text-base py-2 sm:py-2.5">
-                      Launch Tool
-                    </GradientButton>
-                  </div>
-                </Link>
-              </Card>
-            </motion.div>
-          );
-        })}
-      </div>
 
-      {/* Quick Start Section */}
-      <Card className="text-center space-y-3 sm:space-y-4 py-6 sm:py-8 mx-2 sm:mx-0">
-        <h2 className="text-xl sm:text-2xl font-bold text-white">
-          Ready to Get Started?
-        </h2>
-        <p className="text-sm sm:text-base text-gray-400 px-2 sm:px-4 max-w-2xl mx-auto">
-          Pick any tool above to begin your AI-powered marketing journey, or
-          start with our most popular feature.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 px-4 sm:px-0">
-          <Link href="/content-shield" className="w-full sm:w-auto">
-            <GradientButton className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3">
-              Try Content Shield™
-            </GradientButton>
-          </Link>
-          <Link href="/analytics" className="w-full sm:w-auto">
-            <GradientButton className="w-full sm:w-auto bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3">
-              View Analytics
-            </GradientButton>
-          </Link>
+                    {/* Micro Stats */}
+                    <div className="grid grid-cols-3 gap-3 mb-4">
+                      {tool.stats.map((s) => (
+                        <div key={s.label} className="text-center">
+                          <span className="text-lg font-bold text-white">
+                            {s.value}
+                          </span>
+                          <p className="text-xs text-gray-400">{s.label}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="w-full h-2 bg-gray-700/50 rounded-full overflow-hidden mb-6">
+                      <div
+                        className={`h-full bg-gradient-to-r ${tool.color}`}
+                        style={{ width: `${tool.progress}%` }}
+                      />
+                    </div>
+                    <p className="text-xs text-gray-400">
+                      Campaign progress:{" "}
+                      <span className="text-white">{tool.progress}%</span>
+                    </p>
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center text-center bg-black/70 backdrop-blur-lg rounded-lg transition-all duration-500 ease-out">
+                      <p className="text-gray-200 px-6 mb-4">
+                        {tool.description}
+                      </p>
+                      <GradientButton className="px-6 py-2">
+                        Launch Tool
+                      </GradientButton>
+                    </div>
+                  </Card>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
-      </Card>
+      </div>
     </div>
   );
 }

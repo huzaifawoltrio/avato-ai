@@ -1,9 +1,10 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Sidebar } from "@/components/layout/Sidebar";
 import { Header } from "@/components/layout/Header";
 import { ChatbotWidget } from "@/components/ui/chatbotWidget";
+import ParticlesBackground from "@/components/layout/ParticlesBackground";
+import { NavigationDock } from "@/components/layout/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,16 +21,27 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.className} bg-gray-900 text-white min-h-screen`}
+        className={`${inter.className} bg-gray-900 text-white min-h-screen relative`}
       >
-        <div className="flex">
-          <Sidebar />
-          {/* CHANGE: Added responsive margin for collapsed sidebar */}
-          <div className="flex-1 md:ml-64 peer-[.w-20]:md:ml-20 transition-all duration-300 ease-in-out">
-            <Header />
-            <main className="p-6 pt-20">{children}</main>
-            <ChatbotWidget />
-          </div>
+        {/* Global Particles Background */}
+        <ParticlesBackground />
+
+        {/* Centered Layout Structure */}
+        <div className="relative z-10 min-h-screen flex flex-col">
+          {/* Header */}
+
+          <Header />
+          {/* Main Content - Centered and Full Width */}
+          <main className="flex-1 relative m-3 mt-12 z-10 pb-12">
+            {/* Added pb-24 to give space for the bottom dock */}
+            {children}
+          </main>
+
+          {/* Bottom Dock */}
+          <NavigationDock />
+
+          {/* Chatbot Widget */}
+          <ChatbotWidget />
         </div>
       </body>
     </html>
