@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, Chrome, User, Loader2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { GradientButton } from "@/components/ui/GradientButton";
-import ParticlesBg from "particles-bg";
 
 // A simple component for a social login button
 const SocialLoginButton = ({
@@ -68,7 +67,6 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <ParticlesBg type="cobweb" bg={true} num={200} color="#9133E6" />
       <motion.div
         variants={containerVariants}
         initial="hidden"
